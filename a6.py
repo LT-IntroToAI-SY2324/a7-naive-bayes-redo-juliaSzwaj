@@ -161,13 +161,15 @@ class BayesClassifier:
         for word in tokens:
             num_pos_appearances = 1
             if word in self.pos_freqs:
+                print("found")
                 num_pos_appearances += self.pos_freqs[word]
-            # print(num_pos_appearances)
+            print(num_pos_appearances)
             pos_prob += math.log(num_pos_appearances / num_pos_words)
 
             num_neg_appearances = 1
             if word in self.neg_freqs:
                 num_neg_appearances += self.neg_freqs[word]
+            print(num_neg_appearances)
             neg_prob += math.log(num_neg_appearances/ num_neg_words)
 
         # for debugging purposes, it may help to print the overall positive and negative
@@ -320,4 +322,21 @@ if __name__ == "__main__":
     print("\nThe following should all be negative.")
     print(b.classify('rainy days are the worst'))
     print(b.classify('computer science is terrible'))
+    print("\nThe following is to test out the method with each groups responses")
+    #positive
+    print(b.classify('I am so excited for the solar eclipse! It is going to be so cool!'))
+    print(b.classify('I love the sun. It is so bright and beautiful!'))
+    print(b.classify('Pizza is delicious, I really like pepperoni!'))
+    print(b.classify('Dogs make great pets'))
+    #negative
+    print(b.classify('The solar eclipse is going to be boring, why should we waste our time?'))
+    print(b.classify('Nobody likes olives, why would they put olives on the pizza?'))
+    print(b.classify('I cannot believe they did not put french fries on the menu! What a disgrace!'))
+    print(b.classify('I wish they put more flowers in the garden, it just looks bland without roses.'))
+    #Forest Gump 5-star Reviews
+    print(b.classify("Don’t know why I am so late to watch this masterpiece, but now I feel am still lucky enough to have gone through the incredible cinematography, acting and especially the storyline. After watching it you feel grateful to this life and nature. It makes you feel there are a lot of things you can do to earn money but there is just one single thing which can satisfy you within and that is only love. In the storyline, gump always used to be the happiest when Jenny was with him and only wished good for her wherever she went, never asked her why she left him again and again, why she came back. He was always just happy the moment she was with him. I don’t know if anyone would ever read my review or not but after watching the movie I just felt emotional and surely touched by this masterpiece that I came here to add another review to the already existing 5000+ reviews. PS: This is my first movie review ever, I think this movie will always be special to me now."))
+    print(b.classify("Forrest Gump is not just a movie its an emotion this movie has every elements which revolves around us ,I was supposed to watch this long back but i ignored then, finally i watched today!! to say in one word it is just a masterpiece this movie is packed with such a great wonderful messages which can lift up the spirit,This movie has a great lesson which tells us not to give up in tough times and find our inner strength which can lead into great things ,Also caring your loved ones no matter what and understanding there feelings and this movie shows about true friendship relations ..many more to say... It is a great movie of all time and coming to  Tom Hanks acting i'm just speechless incredible!! acting truly he deserve more than oscar he simply nailed it, Such a great actor,This movie stays in my heart and always an inspiration."))
+    #Forest Gump 1-star Reviews
+    print(b.classify("I totally missed the enthusiasm about this movie.  It did take me three tries to get through it (fell asleep once (was really tired) & got up to do something else & wasn't interested enough to come back once.) I found it neither educational nor entertaining. The girl, Jenny, is a druggie who dies of AIDS. The best part was the acting of Gary Sinise but certainly wasn't enough to make a movie. Too long, too boring and too senseless..."))
+    print(b.classify("Most overrated, overhyped, with no logic whatsoever.. luckily it was released in stone age, if it had been brought these days, certainly would have resulted as failure.. except few comic scenes nothing feels as worth watching..I can't understand what all people find good about this... oddly this is my only unpopular opinion, I loved almost all hyped movies but this one, I can't stand, must say it's unbearable to me..worst movie I've ever watched (amongst movies rated 8+ on IMDb)."))
     pass
